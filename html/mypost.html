@@ -35,22 +35,37 @@
             color: #fff;
             border: none;
             border-radius: 5px;
-            padding: 5px 10px;
+            font-size: medium;
+            padding: 20px;
             cursor: pointer;
         }
         .create-post-btn {
             background-color: #28a745;
             color: #fff;
+            font-size: medium;
             border: none;
             border-radius: 5px;
-            padding: 5px 10px;
+            padding: 20px;
             cursor: pointer;
             margin-right: 10px;
             margin-left: 10px;
         }
+        .box{
+            padding: 10px;
+        }
+        .logout-btn {
+            background-color: #fd0000;
+            color: #fff;
+            font-size: medium;
+            border: none;
+            border-radius: 5px;
+            padding: 20px;
+            cursor: pointer;
+            margin-right: 20px;
+        }
         ul {
             list-style-type: none;
-            padding: 0;
+            padding: 0px;
             margin: 0;
         }
         li {
@@ -69,7 +84,7 @@
         .post-content {
             font-size: 16px;
             color: #333;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
         .like-btn {
             background-color: #007bff;
@@ -78,7 +93,7 @@
             border-radius: 5px;
             padding: 5px 10px;
             cursor: pointer;
-            margin-top: 10px;
+            margin-top: 50px;
         }
         .like-count {
             display: inline-block;
@@ -94,20 +109,23 @@
     <div class="action-buttons">
         <div class="back-btn-container">
             <button class="back-btn" onclick="history.go(-1)">Back</button>
+            <button class="create-post-btn" onclick="location.href='/createpost'">Create post</button>
+            <button class="logout-btn" onclick="location.href='/'">Logout</button>
         </div>
-        <button class="create-post-btn" onclick="location.href='/createpost'">Create post</button>
     </div>
-    <ul>
-        {% for post in posts %}
-        {% if post.uid == uid %}
-            <li>
-                <span class="post-author">{{ post.name }}</span>
-                <p class="post-content">{{ post.post }}</p>
-                <a href="/delete_post/{{ post.post_id }}" onclick="return confirm('Are you sure you want to delete this post?');" class="like-btn">Delete</a>
-                <span class="like-count">{{ post.like }} Likes</span>
-            </li>
-        {% endif %}
-        {% endfor %}
-    </ul>
+    <div class="box">
+        <ul>
+            {% for post in posts %}
+            {% if post.uid == uid %}
+                <li>
+                    <span class="post-author">{{ post.name }}</span>
+                    <p class="post-content">{{ post.post }}</p>
+                    <a href="/delete_post/{{ post.post_id }}" onclick="return confirm('Are you sure you want to delete this post?');" class="like-btn">Delete</a>
+                    <span class="like-count">{{ post.like }} Likes</span>
+                </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
 </body>
 </html>

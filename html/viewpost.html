@@ -76,13 +76,21 @@
             padding: 10px 20px;
             border-radius: 5px;
         }
+        .logout-btn {
+            background-color: #ff0000; /* Blue background color */
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-right: 20px;
+        }
     </style>
 </head>
 <body>
     <h1>All Posts</h1>
     <div class="action-buttons">
         <a href="/createpost" class="create-post-btn">Create post</a>
-        <a href="/myposts" class="view-my-posts-btn">View my posts</a>
+        <a href="/myposts" class="view-my-posts-btn">My posts</a>
+        <a href="/" class="logout-btn">Logout</a>
     </div>
 
     <ul>
@@ -92,8 +100,8 @@
                 <p class="post-content">{{ post.post }}</p>
                 <form action="/like/{{ post.post_id }}" method="post">
                     <button type="submit" class="like-btn">Like</button>
+                    <span class="like-count">{{ post.like }} Likes</span>
                 </form>
-                <span class="like-count">{{ post.like }} Likes</span>
             </li>
         {% endfor %}
     </ul>

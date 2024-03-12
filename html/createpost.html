@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Post</title>
+    <style>
+        /* Center the form */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; /* Align elements in a column */
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0; /* Light gray background */
+        }
+
+        form {
+            width: 300px;
+            padding: 20px;
+            border: 1px solid #ccc; /* Light gray border */
+            background-color: white;
+            border-radius: 5px;
+            margin-bottom: 20px; /* Add margin to separate form from buttons */
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff; /* Blue submit button */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+        /* Style for the buttons */
+        .action-buttons {
+            display: flex;
+            justify-content: space-between; /* Align buttons at the ends */
+            width: 300px;
+        }
+
+        .home-btn, .back-btn {
+            padding: 10px;
+            background-color: #28a745; /* Green home button */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .back-btn {
+            background-color: #007bff; /* Blue back button */
+        }
+
+        .home-btn:hover, .back-btn:hover {
+            background-color: #218838; /* Darker green/blue on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>Create Post</h1>
+    <div>
+        <form action="/createpostaction" method="post">
+            <input type="text" name="post" id="post">
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    
+    <div class="action-buttons">
+        <button class="home-btn" onclick="location.href='/'">Home</button>
+        <button class="back-btn" onclick="history.go(-1)">Back</button>
+    </div>
+</body>
+</html>

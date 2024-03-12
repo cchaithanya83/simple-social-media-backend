@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Posts</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+        }
+        .action-buttons {
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .back-btn-container {
+            text-align: left;
+            margin-left: 10px;
+        }
+        .back-btn {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        .create-post-btn {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        li {
+            background-color: #fff;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .post-author {
+            font-size: 18px;
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 5px;
+        }
+        .post-content {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .like-btn {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .like-count {
+            display: inline-block;
+            margin-left: 10px;
+            color: #888;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <h1>My Posts</h1>
+
+    <div class="action-buttons">
+        <div class="back-btn-container">
+            <button class="back-btn" onclick="history.go(-1)">Back</button>
+        </div>
+        <button class="create-post-btn" onclick="location.href='/createpost'">Create post</button>
+    </div>
+    <ul>
+        {% for post in posts %}
+        {% if post.uid == uid %}
+            <li>
+                <span class="post-author">{{ post.name }}</span>
+                <p class="post-content">{{ post.post }}</p>
+                <a href="/delete_post/{{ post.post_id }}" onclick="return confirm('Are you sure you want to delete this post?');" class="like-btn">Delete</a>
+                <span class="like-count">{{ post.like }} Likes</span>
+            </li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+</body>
+</html>

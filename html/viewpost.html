@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Posts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        li {
+            background-color: #fff;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .post-author {
+            font-size: 18px;
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 5px;
+        }
+        .post-content {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .like-btn {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px; /* Increase padding for a larger button */
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .like-count {
+            display: inline-block;
+            margin-left: 10px;
+            color: #888;
+            font-size: 14px;
+        }
+        /* Style for the buttons */
+        .action-buttons {
+            display: flex;
+            justify-content: flex-end; /* Align buttons to the right */
+            margin-bottom: 20px; /* Add some space between buttons and posts */
+        }
+        .action-buttons a {
+            margin-left: 10px;
+            text-decoration: none;
+        }
+        .create-post-btn {
+            background-color: #28a745; /* Green background color */
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+        .view-my-posts-btn {
+            background-color: #007bff; /* Blue background color */
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>All Posts</h1>
+    <div class="action-buttons">
+        <a href="/createpost" class="create-post-btn">Create post</a>
+        <a href="/myposts" class="view-my-posts-btn">View my posts</a>
+    </div>
+
+    <ul>
+        {% for post in posts %}
+            <li>
+                <span class="post-author">{{ post.name }}</span>
+                <p class="post-content">{{ post.post }}</p>
+                <form action="/like/{{ post.post_id }}" method="post">
+                    <button type="submit" class="like-btn">Like</button>
+                </form>
+                <span class="like-count">{{ post.like }} Likes</span>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

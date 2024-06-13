@@ -95,11 +95,3 @@ This project is a social media backend that supports user authentication, post c
 - **POST /like/{post_id}**: Like a post.
 - **GET /delete_post/{post_id}**: Delete a post.
 
-
-
-## Note
-
-- Ensure the directory `html` contains your HTML templates (`index.html`, `signin.html`, `login.html`, `createpost.html`, `mypost.html`, `viewpost.html`).
-- Ensure the `support.py` file contains your SQLAlchemy models `User`, `Post`, and `Like`.
-
-Feel
